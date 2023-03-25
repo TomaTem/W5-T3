@@ -55,15 +55,15 @@ function commonArr2(arr) {
 // 3 способ
 function commonArr3(arr) {
     let result = [];
-    function doubles(...arr) {
+    function doubles(arr) {
         result = arr[0].filter((el) => {
         let index = arr[1].indexOf(el);
         if (index >= 0) return el;
     })};
-    doubles(...arr);
+    doubles(arr);
     while (arr.length > 2) {
         arr.splice(0, 2, result);
-        doubles(...arr);
+        doubles(arr);
     }
     return result;
 };
