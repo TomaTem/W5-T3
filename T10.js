@@ -52,10 +52,29 @@ function commonArr2(arr) {
     return result;
 }
 
-let arr1 = [['a', 'b', 4], [4, 'b', 'c'], ['b', 4, 'e'], ['b', 'e', 4]];
+// 3 способ
+function commonArr3(arr) {
+    let result = [];
+    function doubles(...arr) {
+        result = arr[0].filter((el) => {
+        let index = arr[1].indexOf(el);
+        if (index >= 0) return el;
+    })};
+    doubles(...arr);
+    while (arr.length > 2) {
+        arr.splice(0, 2, result);
+        doubles(...arr);
+    }
+    return result;
+};
+
+let arr1 = [['a', 'b', 4], [4, 'b', 'b', 'c'], ['b', 4, 'e'], ['b', 'e', 4]];
 let arr2 = [[1, 2], [2, 3]];
 console.log(commonArr(arr1));
 console.log(commonArr(arr2));
 
 console.log(commonArr2(arr1));
 console.log(commonArr2(arr2));
+
+console.log(commonArr3(arr1));
+console.log(commonArr3(arr2));
