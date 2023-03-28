@@ -5,6 +5,44 @@
 // ([1, 2], [2, 3]) => [2]
 // (['a', 'b'], ['b', 'c'], ['b', 'e', 'c']) => ['b']
 
+// 3 способ
+function commonArr3(arr) {
+    let result = [];
+    function doubles(arr) {
+        result = arr[0].filter((el) => {
+        let index = arr[1].indexOf(el);
+        if (index >= 0) return el;
+    })};
+    doubles(arr);
+    while (arr.length > 2) {
+        arr.splice(0, 2, result);
+        doubles(arr);
+    }
+    return result;
+};
+
+// Переписала 3 способ после созвона с Пашей
+function commonArr4(arr) {
+    if (arr.length <= 1) return "Предоставьте больше одного массива";
+    let result = arr[0];
+    while (arr.length >= 2) {
+        result = result.filter((el) => arr[1].includes(el));
+        arr.shift();
+    };
+    return result;
+};
+
+// Тоже написала после созвона. Этот вариант нравится больше commonArr4, т.к. он не изменяет исходный массив
+function commonArr5(arr) {
+    if (arr.length <= 1) return "Предоставьте больше одного массива";
+    let result = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        result = result.filter((el) => arr[i].includes(el));
+    };
+    return result;
+};
+
+// Эти способы просто для истории)
 // 1 способ
 function commonArr(arr) {
     let repeats = [];
@@ -52,29 +90,13 @@ function commonArr2(arr) {
     return result;
 }
 
-// 3 способ
-function commonArr3(arr) {
-    let result = [];
-    function doubles(arr) {
-        result = arr[0].filter((el) => {
-        let index = arr[1].indexOf(el);
-        if (index >= 0) return el;
-    })};
-    doubles(arr);
-    while (arr.length > 2) {
-        arr.splice(0, 2, result);
-        doubles(arr);
-    }
-    return result;
-};
-
 let arr1 = [['a', 'b', 4], [4, 'b', 'b', 'c'], ['b', 4, 'e'], ['b', 'e', 4]];
 let arr2 = [[1, 2], [2, 3]];
-console.log(commonArr(arr1));
-console.log(commonArr(arr2));
-
-console.log(commonArr2(arr1));
-console.log(commonArr2(arr2));
-
 console.log(commonArr3(arr1));
 console.log(commonArr3(arr2));
+
+console.log(commonArr4(arr1));
+console.log(commonArr4(arr2));
+
+console.log(commonArr5(arr1));
+console.log(commonArr5(arr2));
