@@ -9,6 +9,11 @@ function newArray1(arr) {
 }
 console.log(newArray1([1, 2, [3, 4, [5]]]));
 
+// Переписала после созвона с Пашей. Убрала создание дополнительной переменной
+function newArray3(arr) {
+    return arr.flat(Infinity);
+}
+
 function newArray2(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i])) {

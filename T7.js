@@ -12,6 +12,13 @@ function equal(arr1, arr2) {
         } return true;  
     } else return false;
 }
+
+// Переписала после созвона с Пашей. Цикл заменен использованием метода. А стрелочная функция позволяет не писать if, else, return true и false
+const equal2 = (arr1, arr2) => arr1.length == arr2.length && arr1.every((el, i) => el == arr2[i]);
+
 console.log(equal([1, 2, 3], [1, 2, 3]));
 console.log(equal([1, 2, 3], [1, 2, 4]));
 console.log(equal([1, 2, 3], [1, 2, 3, 4]));
+console.log(equal2([1, 2, 3], [1, 2, 3]));
+console.log(equal2([1, 2, 3], [1, 2, 4]));
+console.log(equal2([1, 2, 3], [1, 2, 3, 4]));

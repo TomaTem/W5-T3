@@ -13,4 +13,13 @@ function getObject(arr) {
     }
     return obj;
 }
+
+// Переписала после созвона с Пашей. Убрала условие с j, т.к. оно было сделано для случая, когда в массиве больше 2х лементов (например, [['a', 1, 'c', 4], ['b', 2]]). Этого в задаче не требуется, не перегружаю код
+function getObject2(arr) {
+    let obj = {};
+    arr.forEach(el => obj[el[0]] = el[1]);
+    return obj;
+}
+
+console.log(getObject2([['a', 1], ['b', 2]]))
 console.log(getObject([['a', 1, "c", 2], ['b', 2]]))
